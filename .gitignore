@@ -1,0 +1,23 @@
+# Ignorar todo por defecto
+*
+
+# Permitir archivos HTML
+!*.html
+
+# Permitir archivos CSS
+!*.css
+
+# Permitir imágenes comunes
+!*.jpg
+!*.jpeg
+!*.png
+!*.gif
+!*.svg
+!*.webp
+!*.ico
+
+# Permitir directorios (necesario para navegar la estructura)
+!*/
+
+# Permitir archivos de configuración Git
+!.gitignore
