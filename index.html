@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzas Familiares en Equilibrio - Mónica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05);
+        }
+
+        header {
+            background: linear-gradient(135deg, #e53e97 0%, #c2185b 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-bottom: 3px solid #e53e97;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            color: #4a5568;
+            text-decoration: none;
+            padding: 1.2rem 1.8rem;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #e53e97;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover {
+            color: #e53e97;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        .section {
+            padding: 4rem 3rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+        }
+
+        .section h2 {
+            color: #1a202c;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid #e53e97;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: #fbb6ce;
+        }
+
+        .section h3 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e53e97 0%, #f687b3 100%);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(229, 62, 151, 0.15);
+        }
+
+        .card h4 {
+            color: #e53e97;
+            margin-top: 0;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fff5f7 0%, #fed7e2 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 5px solid #e53e97;
+            box-shadow: 0 2px 10px rgba(229, 62, 151, 0.1);
+        }
+
+        .tech-box {
+            background: linear-gradient(135deg, #ffffff 0%, #fef5f8 100%);
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 16px;
+            box-shadow: 0 6px 25px rgba(229, 62, 151, 0.1);
+            border: 2px solid #fbb6ce;
+        }
+
+        .tech-box h3 {
+            color: #c2185b;
+            margin-top: 0;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .pros {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid #48bb78;
+            box-shadow: 0 3px 12px rgba(72, 187, 120, 0.1);
+        }
+
+        .cons {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid #f56565;
+            box-shadow: 0 3px 12px rgba(245, 101, 101, 0.1);
+        }
+
+        .pros h5, .cons h5 {
+            margin-bottom: 1rem;
+            color: #2d3748;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .pros ul, .cons ul {
+            margin-left: 1.5rem;
+        }
+
+        .pros li, .cons li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #e53e97 0%, #c2185b 100%);
+            color: white;
+            border-radius: 16px;
+            min-width: 200px;
+            box-shadow: 0 8px 20px rgba(229, 62, 151, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #e53e97 0%, #c2185b 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: #fef5f8;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .quote {
+            font-style: italic;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fff5f7 0%, #fed7e2 100%);
+            border-left: 5px solid #e53e97;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(229, 62, 151, 0.1);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 0;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, #e53e97 0%, #c2185b 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(229, 62, 151, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 62, 151, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Finanzas Familiares en Equilibrio</h1>
+            <p>Talleres de Educación Financiera para Reducir el Endeudamiento en Familias de Puebla</p>
+            <p style="margin-top: 0.5rem; font-size: 1rem;">Mónica | Módulo 23 Prepa en Línea SEP | Febrero 2026</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#planificacion">Planificación</a></li>
+                <li><a href="#organizacion">Organización</a></li>
+                <li><a href="#direccion">Dirección</a></li>
+                <li><a href="#control">Control</a></li>
+                <li><a href="#tecnologias">Tecnologías</a></li>
+                <li><a href="#reflexiones">Reflexiones</a></li>
+            </ul>
+        </nav>
+
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio" class="section">
+            <h2>🏠 Inicio</h2>
+            
+            <div class="highlight">
+                <h3>Finanzas Familiares en Equilibrio</h3>
+                <h4 style="color: #e53e97; margin-top: 0.5rem;">Talleres de Educación Financiera para Reducir el Endeudamiento en Familias de Puebla</h4>
+            </div>
+            
+            <div class="highlight">
+                <h3>El Problema</h3>
+                <p>En Puebla, México, muchas familias enfrentan un problema crítico: <strong>alto endeudamiento y falta de educación financiera básica</strong>.</p>
+                <p>Según la Encuesta Nacional de Inclusión Financiera 2024:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>El 76.5% de mexicanos tiene productos financieros</li>
+                    <li>Solo el 36% planifica sus gastos mensuales</li>
+                    <li>El endeudamiento familiar promedio supera el 60% de ingresos</li>
+                    <li>Los intereses de tarjetas de crédito superan el 50% anual</li>
+                </ul>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">15-20</span>
+                    <span>Familias Participantes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span>Meses de Duración</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$6,000</span>
+                    <span>Presupuesto Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">250</span>
+                    <span>Horas de Trabajo</span>
+                </div>
+            </div>
+
+            <h3>La Solución</h3>
+            <p>"Finanzas Familiares en Equilibrio" es un programa de educación financiera de 12 meses que combina:</p>
+            <div class="grid">
+                <div class="card">
+                    <h4>📚 Talleres Presenciales</h4>
+                    <p>12 talleres mensuales de 2 horas sobre presupuesto, ahorro, crédito, inversión y planificación financiera.</p>
+                </div>
+                <div class="card">
+                    <h4>👥 Asesorías Personalizadas</h4>
+                    <p>Acompañamiento individual para cada familia según su situación específica de deudas e ingresos.</p>
+                </div>
+                <div class="card">
+                    <h4>📱 Seguimiento Digital</h4>
+                    <p>Comunicación constante por Slack con tips semanales, resolución de dudas y motivación continua.</p>
+                </div>
+                <div class="card">
+                    <h4>👩 Perspectiva de Género</h4>
+                    <p>3 sesiones específicas para empoderar económicamente a las mujeres de la familia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PLANIFICACIÓN -->
+        <section id="planificacion" class="section">
+            <h2>📋 Fase 1: Planificación</h2>
+            
+            <h3>Objetivo General</h3>
+            <div class="highlight">
+                <p>Desarrollar competencias financieras en 15-20 miembros de mi familia en Puebla, mediante un programa de 12 meses que combine talleres presenciales, asesorías personalizadas y seguimiento digital por WhatsApp, para reducir el endeudamiento en un 30%, fortalecer la capacidad de ahorro hasta alcanzar un fondo de emergencia equivalente a 3 meses de gastos, y promover la toma de decisiones económicas informadas que permitan romper el ciclo intergeneracional de mala administración del dinero.</p>
+            </div>
+
+            <h3>6 Objetivos Específicos</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>💰 1. Reducir Endeudamiento</h4>
+                    <p><strong>Meta:</strong> Reducción promedio del 30% en deudas totales mediante el método bola de nieve al mes 12.</p>
+                </div>
+                <div class="card">
+                    <h4>📖 2. Capacitar en Finanzas</h4>
+                    <p><strong>Meta:</strong> 80% de participantes aprueba evaluación de conocimientos financieros.</p>
+                </div>
+                <div class="card">
+                    <h4>👨‍👩‍👧‍👦 3. Romper Ciclo Intergeneracional</h4>
+                    <p><strong>Meta:</strong> Participación de 3 generaciones (abuelos, padres, hijos) en el 40% de familias.</p>
+                </div>
+                <div class="card">
+                    <h4>💵 4. Establecer Ahorro</h4>
+                    <p><strong>Meta:</strong> 60% de familias con fondo de emergencia de 3 meses de gastos al mes 12.</p>
+                </div>
+                <div class="card">
+                    <h4>👩‍💼 5. Empoderar a Mujeres</h4>
+                    <p><strong>Meta:</strong> 70% de mujeres toma al menos 1 decisión financiera autónoma al mes 12.</p>
+                </div>
+                <div class="card">
+                    <h4>😌 6. Reducir Estrés Financiero</h4>
+                    <p><strong>Meta:</strong> 75% reporta sentirse más tranquilo respecto a su situación económica al mes 12.</p>
+                </div>
+            </div>
+
+            <h3>Justificación</h3>
+            <p><strong>Ámbito Económico:</strong> La mala gestión financiera genera un círculo vicioso de endeudamiento que afecta la calidad de vida. Este proyecto ofrece herramientas prácticas para romper ese ciclo.</p>
+            <p><strong>Ámbito Social:</strong> Según ONU Mujeres, el 41% de mujeres no se separa de relaciones problemáticas por dependencia económica. El empoderamiento financiero femenino es crucial.</p>
+            <p><strong>Ámbito Educativo:</strong> Al involucrar 3 generaciones, se asegura que los conocimientos financieros se transmitan y no se repitan los mismos errores generacionales.</p>
+        </section>
+
+        <!-- SECCIÓN ORGANIZACIÓN -->
+        <section id="organizacion" class="section">
+            <h2>🗂️ Fase 3: Organización</h2>
+            
+            <h3>10 Actividades Principales</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Actividad</th>
+                        <th>Duración</th>
+                        <th>Mes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3" style="background: #A8D08D; font-weight: bold;">Fase 1:<br>Previas</td>
+                        <td>1. Convocatoria y registro</td>
+                        <td>1 mes</td>
+                        <td>Mes 0-1</td>
+                    </tr>
+                    <tr>
+                        <td>2. Evaluación inicial/diagnóstico</td>
+                        <td>1.5 meses</td>
+                        <td>Mes 1-2</td>
+                    </tr>
+                    <tr>
+                        <td>3. Preparar materiales y logística</td>
+                        <td>1 mes</td>
+                        <td>Mes 1-2</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" style="background: #F4B084; font-weight: bold;">Fase 2:<br>Desarrollo</td>
+                        <td>4. Impartir 12 talleres mensuales</td>
+                        <td>12 meses</td>
+                        <td>Mes 1-12</td>
+                    </tr>
+                    <tr>
+                        <td>5. Asesorías personalizadas</td>
+                        <td>10 meses</td>
+                        <td>Mes 2-12</td>
+                    </tr>
+                    <tr>
+                        <td>6. Sesiones perspectiva de género</td>
+                        <td>3 sesiones</td>
+                        <td>Mes 4, 7, 10</td>
+                    </tr>
+                    <tr>
+                        <td>7. Seguimiento digital WhatsApp</td>
+                        <td>11 meses</td>
+                        <td>Mes 2-12</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="background: #8FAADC; font-weight: bold;">Fase 3:<br>Concreción</td>
+                        <td>8. Evaluaciones intermedia y final</td>
+                        <td>2 momentos</td>
+                        <td>Mes 6, 12</td>
+                    </tr>
+                    <tr>
+                        <td>9. Documentar resultados</td>
+                        <td>2 meses</td>
+                        <td>Mes 11-12</td>
+                    </tr>
+                    <tr>
+                        <td>10. Plan de sostenibilidad</td>
+                        <td>2 meses</td>
+                        <td>Mes 11-12</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Presupuesto Detallado</h3>
+            <table>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Detalle</th>
+                    <th>Costo</th>
+                </tr>
+                <tr>
+                    <td>Refrigerios talleres</td>
+                    <td>$200 x 12 meses</td>
+                    <td>$2,400</td>
+                </tr>
+                <tr>
+                    <td>Sesiones de género</td>
+                    <td>$200 x 3 sesiones</td>
+                    <td>$600</td>
+                </tr>
+                <tr>
+                    <td>Materiales impresos</td>
+                    <td>Cuestionarios, plantillas, certificados</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>Evento de cierre</td>
+                    <td>Celebración final mes 12</td>
+                    <td>$150</td>
+                </tr>
+                <tr>
+                    <td>Impresiones varias</td>
+                    <td>Convocatoria, reportes, evaluaciones</td>
+                    <td>$250</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td></td>
+                    <td><strong>$3,900</strong></td>
+                </tr>
+            </table>
+            <p><em>Nota: Herramientas tecnológicas (Slack, Google Forms, Google Calendar) son gratuitas. Laptop y proyector son prestados.</em></p>
+
+            <h3>Diagrama de Flujo - Primera Fase</h3>
+            <div class="highlight">
+                <p><strong>El diagrama de flujo muestra el proceso de la primera fase del proyecto</strong>, desde la difusión de la convocatoria hasta la preparación de materiales y logística. Incluye 14 pasos con 2 puntos de decisión críticos:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>¿Se inscribieron al menos 10 familias?</li>
+                    <li>¿Están listos los materiales y la logística?</li>
+                </ul>
+            </div>
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin: 2rem 0; text-align: center;">
+                <img src="data:image/svg+xml;base64,..." alt="Diagrama de Flujo - Primera Fase" style="max-width: 100%; height: auto; border-radius: 8px;">
+                <p style="margin-top: 1rem; color: #4a5568; font-size: 0.9rem;"><em>Diagrama de Flujo completo disponible en documentación del proyecto</em></p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DIRECCIÓN -->
+        <section id="direccion" class="section">
+            <h2>👥 Fase 4: Dirección - División del Trabajo</h2>
+            
+            <h3>5 Perfiles de Colaboradores</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>1. Familiar de Confianza</h4>
+                    <p><strong>Rol:</strong> Difusión y logística</p>
+                    <p><strong>Tiempo:</strong> 2-3 hrs/mes</p>
+                    <p><strong>Fase:</strong> 1 y 2</p>
+                </div>
+                <div class="card">
+                    <h4>2. Familias Anfitrionas</h4>
+                    <p><strong>Rol:</strong> Proporcionar espacio para talleres</p>
+                    <p><strong>Tiempo:</strong> 3-4 hrs por turno</p>
+                    <p><strong>Fase:</strong> 2</p>
+                </div>
+                <div class="card">
+                    <h4>3. Asesor Financiero</h4>
+                    <p><strong>Rol:</strong> Apoyo en temas técnicos (crédito, inversión)</p>
+                    <p><strong>Tiempo:</strong> 4-6 hrs/mes (meses puntuales)</p>
+                    <p><strong>Fase:</strong> 2</p>
+                </div>
+                <div class="card">
+                    <h4>4. Especialista en Género</h4>
+                    <p><strong>Rol:</strong> Co-facilitar sesiones de empoderamiento</p>
+                    <p><strong>Tiempo:</strong> 3-4 hrs por sesión</p>
+                    <p><strong>Fase:</strong> 2 (meses 4, 7, 10)</p>
+                </div>
+                <div class="card">
+                    <h4>5. Líderes Familiares (5)</h4>
+                    <p><strong>Rol:</strong> Multiplicadores, continuidad post-mes 12</p>
+                    <p><strong>Tiempo:</strong> 5 hrs capacitación + 2 hrs/trimestre</p>
+                    <p><strong>Fase:</strong> 3</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3>Importancia de la División del Trabajo</h3>
+                <p>La colaboración es esencial porque:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Aprovecha fortalezas:</strong> Cada colaborador aporta habilidades específicas que yo no tengo</li>
+                    <li><strong>Previene agotamiento:</strong> 250 horas de trabajo en 12 meses son manejables con apoyo</li>
+                    <li><strong>Asegura sostenibilidad:</strong> Los líderes capacitados garantizan continuidad después del mes 12</li>
+                    <li><strong>Aumenta credibilidad:</strong> Un asesor financiero profesional da seriedad al proyecto</li>
+                </ul>
+            </div>
+
+            <h3>Esquema de División del Trabajo</h3>
+            <div class="highlight">
+                <p><strong>El esquema muestra la estructura jerárquica del proyecto:</strong></p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Facilitadora Principal (Mónica):</strong> Coordinación general del proyecto - 250 horas en 12 meses</li>
+                    <li><strong>5 Colaboradores:</strong> Cada uno con roles específicos en diferentes fases</li>
+                    <li><strong>Código de colores:</strong> Verde (logística), Naranja (apoyo técnico), Azul (sostenibilidad)</li>
+                </ul>
+            </div>
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin: 2rem 0; text-align: center;">
+                <p style="margin-top: 1rem; color: #4a5568; font-size: 0.9rem;"><em>Esquema de División del Trabajo disponible en documentación del proyecto</em></p>
+                <p style="color: #718096; margin-top: 1rem;">El organigrama muestra la estructura de colaboración con 5 perfiles de colaboradores coordinados por la facilitadora principal, cada uno con tareas específicas distribuidas en las 3 fases del proyecto.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTROL -->
+        <section id="control" class="section">
+            <h2>📊 Fase 5 y 6: Control - Medir y Corregir</h2>
+            
+            <h3>Diagrama de Gantt</h3>
+            <p>Se elaboró un Diagrama de Gantt completo con:</p>
+            <ul style="margin-left: 2rem;">
+                <li>10 actividades principales distribuidas en 12 meses</li>
+                <li>Recursos asignados (materiales, tecnológicos, financieros, humanos)</li>
+                <li>Porcentajes de avance esperados</li>
+                <li>Notas adicionales para cada actividad</li>
+                <li>Logros esperados por actividad</li>
+            </ul>
+
+            <h3>Escenarios del Proyecto</h3>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h5>✅ MEJOR ESCENARIO</h5>
+                    <ul>
+                        <li>20 familias comprometidas</li>
+                        <li>85%+ de asistencia a talleres</li>
+                        <li>90% reduce deudas >30%</li>
+                        <li>Gran participación femenina</li>
+                        <li>3 generaciones activas</li>
+                        <li>5 líderes exitosos</li>
+                    </ul>
+                    <p><strong>Acciones:</strong> Documentar todo, compartir historias de éxito, celebrar logros, crear manual de mejores prácticas.</p>
+                </div>
+                <div class="cons">
+                    <h5>❌ PEOR ESCENARIO</h5>
+                    <ul>
+                        <li>Solo 10 familias inscritas</li>
+                        <li>50% o menos de asistencia</li>
+                        <li>No se reduce endeudamiento</li>
+                        <li>Alta deserción mes 4</li>
+                        <li>Mujeres no asisten</li>
+                        <li>Sin continuidad post-mes 12</li>
+                    </ul>
+                    <p><strong>Acciones:</strong> Simplificar contenidos, cambiar horarios, ofrecer incentivos, acompañamiento intensivo, alianzas con CONDUSEF.</p>
+                </div>
+            </div>
+
+            <h3>10 Estándares de Medición</h3>
+            <table>
+                <tr>
+                    <th>Estándar</th>
+                    <th>Meta</th>
+                    <th>Cuándo se mide</th>
+                </tr>
+                <tr>
+                    <td>1. Participación inicial</td>
+                    <td>15-20 familias inscritas</td>
+                    <td>Mes 1</td>
+                </tr>
+                <tr>
+                    <td>2. Asistencia a talleres</td>
+                    <td>75% promedio</td>
+                    <td>Mensual</td>
+                </tr>
+                <tr>
+                    <td>3. Uso de presupuesto</td>
+                    <td>100% de familias</td>
+                    <td>A partir mes 3</td>
+                </tr>
+                <tr>
+                    <td>4. Reducción de deudas</td>
+                    <td>30% promedio</td>
+                    <td>Mes 12</td>
+                </tr>
+                <tr>
+                    <td>5. Fondo de emergencia</td>
+                    <td>60% con 3 meses ahorrados</td>
+                    <td>Mes 12</td>
+                </tr>
+                <tr>
+                    <td>6. Conocimientos financieros</td>
+                    <td>80% aprueba evaluación</td>
+                    <td>Mes 6 y 12</td>
+                </tr>
+                <tr>
+                    <td>7. Empoderamiento femenino</td>
+                    <td>70% toma decisiones autónomas</td>
+                    <td>Mes 12</td>
+                </tr>
+                <tr>
+                    <td>8. Reducción estrés</td>
+                    <td>75% reporta menos estrés</td>
+                    <td>Mes 12</td>
+                </tr>
+                <tr>
+                    <td>9. Participación 3 generaciones</td>
+                    <td>40% de familias</td>
+                    <td>A partir mes 3</td>
+                </tr>
+                <tr>
+                    <td>10. Sostenibilidad</td>
+                    <td>5 líderes capacitados</td>
+                    <td>Mes 11-12</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- SECCIÓN TECNOLOGÍAS -->
+        <section id="tecnologias" class="section">
+            <h2>💻 Tecnologías Emergentes Implementadas</h2>
+            
+            <div class="tech-box">
+                <h3>1. SLACK - Plataforma de Comunicación Empresarial</h3>
+                <p><strong>¿Qué es?</strong> Slack es una plataforma de comunicación profesional que organiza conversaciones en canales temáticos, permite mensajería directa, videollamadas, compartir archivos y se integra con múltiples herramientas.</p>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>✅ VENTAJAS</h5>
+                        <ul>
+                            <li><strong>Organización por canales temáticos:</strong> Puedo crear canales específicos como #talleres-mensuales, #sesiones-genero, #dudas-presupuesto, #historias-de-exito. Esto evita que toda la información se mezcle en un solo chat gigante donde se pierden los mensajes importantes.</li>
+                            <li><strong>Búsqueda eficiente de información:</strong> Las familias pueden buscar por palabras clave información compartida hace semanas. Si alguien pregunta "¿Cómo era el método bola de nieve?", puede buscar y encontrar la explicación original con ejemplos, sin que yo tenga que re-explicar.</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>❌ DESVENTAJAS</h5>
+                        <ul>
+                            <li><strong>Curva de aprendizaje:</strong> No todas las familias están familiarizadas con Slack. Requiere capacitación inicial sobre cómo usar canales, hilos de conversación, notificaciones y búsqueda. Algunas personas mayores pueden sentirse intimidadas.</li>
+                            <li><strong>Requiere internet constante:</strong> A diferencia de WhatsApp que funciona bien con datos móviles limitados, Slack consume más datos y requiere conexión estable. Puede ser problema para familias con planes básicos de internet.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-box">
+                <h3>2. GOOGLE FORMS - Formularios y Encuestas Digitales</h3>
+                <p><strong>¿Qué es?</strong> Google Forms es una herramienta gratuita para crear cuestionarios, encuestas y formularios en línea, con respuestas que se almacenan automáticamente en hojas de cálculo para análisis.</p>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>✅ VENTAJAS</h5>
+                        <ul>
+                            <li><strong>Medición objetiva:</strong> Puedo aplicar evaluaciones de conocimientos y encuestas de satisfacción con resultados automáticos en gráficas. Esto me permite medir si cumplo mis estándares como "80% aprueba evaluación" o "75% reporta satisfacción", sin tener que capturar datos manualmente.</li>
+                            <li><strong>Anonimato opcional:</strong> Para temas sensibles como violencia económica en las sesiones de género, las mujeres pueden responder anónimamente. Esto me permite obtener información real sobre dependencia financiera sin exponer a nadie, rompiendo la barrera del miedo.</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>❌ DESVENTAJAS</h5>
+                        <ul>
+                            <li><strong>Limitaciones de diseño:</strong> Los formularios tienen un diseño básico que puede resultar poco atractivo o aburrido para algunas personas. Aunque funcionales, no son muy motivantes visualmente, lo que puede afectar la disposición para completarlos.</li>
+                            <li><strong>Depende de cuenta Google:</strong> Aunque la mayoría tiene Gmail, algunas personas mayores en mi familia no tienen cuenta Google o no recuerdan sus contraseñas. Esto crea barreras de acceso que debo resolver con capacitación o creando cuentas para ellos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-box">
+                <h3>3. GOOGLE CALENDAR - Calendario Compartido Colaborativo</h3>
+                <p><strong>¿Qué es?</strong> Google Calendar es una herramienta de gestión de tiempo que permite crear calendarios compartidos, programar eventos con recordatorios automáticos, invitar participantes y sincronizarse con múltiples dispositivos.</p>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>✅ VENTAJAS</h5>
+                        <ul>
+                            <li><strong>Recordatorios automáticos:</strong> Envía notificaciones 24 horas antes y 1 hora antes de cada taller. Esto reduce ausencias por olvido sin que yo tenga que estar mandando mensajes recordatorios manualmente, ahorrándome muchísimo tiempo durante los 12 meses.</li>
+                            <li><strong>Transparencia total:</strong> Todas las familias ven las fechas de los 12 talleres, 3 sesiones de género y evaluaciones importantes en un solo lugar. Incluye dirección exacta y link a Google Maps, eliminando confusiones de "¿cuándo y dónde dijiste que era?"</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>❌ DESVENTAJAS</h5>
+                        <ul>
+                            <li><strong>Saturación de notificaciones:</strong> Si las familias tienen muchos calendarios compartidos (trabajo, escuela, familia), pueden saturarse de notificaciones y empezar a ignorarlas todas, perdiendo efectividad. Necesito educar sobre configuración de notificaciones.</li>
+                            <li><strong>No garantiza asistencia:</strong> Aunque todos vean el evento en el calendario, esto no asegura que asistan. Los recordatorios ayudan pero necesito complementar con estrategias de compromiso y motivación más allá de solo notificaciones automáticas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3>🔗 Integración de Tecnologías</h3>
+                <p>Estas tres tecnologías funcionan como un <strong>ecosistema integrado</strong>:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Google Calendar</strong> organiza los tiempos y envía recordatorios automáticos</li>
+                    <li><strong>Slack</strong> mantiene la comunicación clara y organizada por temas</li>
+                    <li><strong>Google Forms</strong> me da datos objetivos para medir si cumplo mis estándares</li>
+                </ul>
+                <p>Cuando Google Calendar crea un evento, se notifica en Slack. Cuando Google Forms recibe respuestas, puedo compartir resultados en Slack. Todo se conecta para crear un flujo de trabajo eficiente.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN REFLEXIONES -->
+        <section id="reflexiones" class="section">
+            <h2>💭 Reflexiones del Proceso</h2>
+            
+            <h3>Principales Dificultades</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>1. Definir Estándares Medibles</h4>
+                    <p>Al principio escribía metas vagas como "las familias mejorarán sus finanzas". Tuve que aprender a ponerle números concretos: ¿Cuánto es mejorar? ¿Cómo lo mido? Investigar sobre escalas de medición me tomó horas.</p>
+                </div>
+                <div class="card">
+                    <h4>2. Elaborar Diagrama de Gantt</h4>
+                    <p>Nunca había trabajado con esta herramienta. Distribuir 10 actividades en 12 meses, calcular tiempos realistas y visualizar traslapes fue un desafío técnico y de planificación.</p>
+                </div>
+                <div class="card">
+                    <h4>3. Elegir Tecnologías Emergentes</h4>
+                    <p>Balancear entre herramientas innovadoras versus realistas fue difícil. Slack suena increíble pero ¿lo usarán familias que apenas usan WhatsApp? Tuve que pensar en la brecha digital.</p>
+                </div>
+                <div class="card">
+                    <h4>4. Enfrentar el Peor Escenario</h4>
+                    <p>Escribir que el proyecto podría fracasar fue emocionalmente duro. Pero también liberador porque al pensar en soluciones me di cuenta de que hay acciones correctivas.</p>
+                </div>
+            </div>
+
+            <h3>Principales Logros</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>✅ 1. Proyecto Estructurado</h4>
+                    <p>Transformé una idea vaga en un plan profesional con 10 actividades, 24 metas específicas, 10 estándares medibles y presupuesto realista de $6,000 pesos.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ 2. Herramientas Profesionales</h4>
+                    <p>Aprendí a usar Diagramas de Gantt, definición de estándares SMART, análisis de escenarios y gestión de riesgos. Ya no solo tengo buenas intenciones, tengo un plan ejecutable.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ 3. Pensamiento Crítico Tecnológico</h4>
+                    <p>Desarrollé criterio para elegir tecnologías según necesidades específicas. Entiendo que no hay herramientas "buenas o malas", sino soluciones adecuadas o inadecuadas según el contexto.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ 4. Competencias Profesionales</h4>
+                    <p>Fortalecí competencias de trabajo independiente, manejo de procesadores (Word, Excel), consulta de fuentes confiables y capacidad para generar fuentes de empleo.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                <p>"Este proyecto me enseñó que la diferencia entre soñar con cambiar algo y realmente cambiarlo está en la planificación detallada, la medición objetiva y el uso estratégico de tecnología."</p>
+                <p style="text-align: right; margin-top: 1rem;"><strong>- Mónica, Módulo 23</strong></p>
+            </div>
+
+            <h3>Nivel de Desempeño: CAPACITADO</h3>
+            <p>Me considero <strong>Capacitado</strong> porque:</p>
+            <ul style="margin-left: 2rem;">
+                <li>Cumplí con todos los requisitos de cada fase del proyecto</li>
+                <li>Creé documentos funcionales que realmente usaré para gestionar el proyecto</li>
+                <li>Demostré comprensión de conceptos de administración y gestión</li>
+                <li>Apliqué tecnologías emergentes de manera estratégica</li>
+            </ul>
+            <p>No me considero "Experto" porque reconozco áreas de mejora: necesito más experiencia práctica implementando las herramientas, podría haber diseñado estándares más sofisticados, y aún me falta dominar completamente las capacidades avanzadas de Excel y gestión de proyectos profesional.</p>
+        </section>
+
+        <footer>
+            <p><strong>Finanzas Familiares en Equilibrio</strong></p>
+            <p>Talleres de Educación Financiera para Reducir el Endeudamiento en Familias de Puebla</p>
+            <p style="margin-top: 1rem;">Proyecto desarrollado por Mónica</p>
+            <p>Módulo 23 - Prepa en Línea SEP | Febrero 2026</p>
+            <p style="margin-top: 1rem;">📍 Puebla, México</p>
+        </footer>
+    </div>
+</body>
+</html>
